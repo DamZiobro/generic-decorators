@@ -38,8 +38,21 @@ def serial_function_trigger():
 
 ```
 
-You can use below [timing](timing) decorator to compare time of above parallel 
+You can use below [timing](#timing) decorator to compare time of above parallel 
 and sequential versions.
+
+### `make_parallel_processes`
+
+**Description**: Similar functionality like [make_parallel](#make_parallel) but 
+uses `mulitprocessing` instead of `threading`.
+
+**Example**
+
+```python
+def parallel_function_trigger():
+    list_of_post_ids = list(range(1, 20))
+    return make_parallel_processes(sample_function)(list_of_post_ids)
+```
 
 ### `timing` 
 

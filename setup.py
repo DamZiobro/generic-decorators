@@ -35,5 +35,8 @@ setup(
     ],
     packages=["generic_decorators"],
     include_package_data=True,
+    install_requires=[
+        'joblib>=1.0.1',
+    ],
     python_requires='>=3.0',
 )

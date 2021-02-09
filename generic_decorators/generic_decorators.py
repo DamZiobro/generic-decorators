@@ -11,6 +11,9 @@ import os
 from functools import wraps
 from time import time
 
+from joblib import Parallel, delayed
+import multiprocessing
+
 """
 This fila contains generic useful decorators
 """
@@ -72,6 +75,43 @@ def make_parallel(func):
                     bag = {executer.submit(func, i): i for i in lst}
                     for future in concurrent.futures.as_completed(bag):
                         result.append(future.result())
+        else:
+            result = []
+        return result
+    return wrapper
+
+
+def make_parallel_processes(func):
+    """
+    Similar like make_parallel, but uses multiprocessing (trigger new processes for each function)
+    instead of threads.
+    """
+
+    @wraps(func)
+    def wrapper(lst):
+        """
+
+        :param lst:
+            The inputs of the function in a list.
+        :return:
+        """
+        # the number of processes that can be max-spawned.
+        number_of_workers = int(multiprocessing.cpu_count())
+        if len(lst) < number_of_workers:
+            # If the length of the list is low, we would only require those many number of processes
+            # Here we are avoiding creating unnecessary processes
+            number_of_workers = len(lst)
+
+        if number_of_workers:
+            if number_of_workers == 1:
+                # If the length of the list that needs to be parallelized is 1, there is no point in
+                # parallelizing the function.
+                # So we run it serially.
+                result = [func(lst[0])]
+            else:
+                # Core Code, where we are creating max number of processes and
+                # running the decorated function in parallel.
+                result = Parallel(n_jobs=number_of_workers)(delayed(func)(i) for i in lst)
         else:
             result = []
         return result
