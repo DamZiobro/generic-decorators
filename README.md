@@ -2,11 +2,9 @@
 
 Generic Python Decorators for use in any project.
 
-This script uses [AWS CloudWatch Insights](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html) service.
-
 ## Install
 
-`generic-decorators` is released to public PyPI - [awsinsights](https://pypi.org/project/generic-decorators/). It can be installed using this command:
+`generic-decorators` is released to public PyPI - [generic-decorators](https://pypi.org/project/generic-decorators/). It can be installed using this command:
 ```
 pip install generic-decorators
 ```
