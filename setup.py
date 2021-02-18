@@ -21,7 +21,7 @@ with open(os.path.join(HERE, "README.md")) as fid:
 # This call to setup() does all the work
 setup(
     name="generic-decorators",
-    version="1.0.2",
+    version="1.0.3",
     description="Generic Python Decorators for use in any project",
     long_description=README,
     long_description_content_type="text/markdown",
