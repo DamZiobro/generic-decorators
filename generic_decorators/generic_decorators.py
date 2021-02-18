@@ -116,3 +116,18 @@ def make_parallel_processes(func):
             result = []
         return result
     return wrapper
+
+
+def singleton(class_):
+    """
+    Class decorator which helps to create Singleton classes.
+    """
+    instances = {}
+
+    def getinstance(*args, **kwargs):
+        if class_ not in instances:
+            print(f"singleton(): creating class {class_.__name__}")
+            instances[class_] = class_(*args, **kwargs)
+        return instances[class_]
+
+    return getinstance

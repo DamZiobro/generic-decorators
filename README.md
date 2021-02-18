@@ -73,3 +73,35 @@ It should print something like this (time can differ):
 func:'sleep_n_seconds' args:[(5,), {}] took: 5.0047 sec
 ```
 
+### `singleton` 
+
+**Summary**: make class Singleton - class which will have max 1 instance created
+
+**Example**
+
+```python
+@singleton
+class MyClass(object):
+    """docstring for MyClass"""
+    def __init__(self):
+        pass
+
+for i in range(0, 10):
+    obj = MyClass()
+    print(obj)
+```
+
+It should print something like this (all objects of class are the same):
+```
+<__main__.MyClass object at 0x7fc3bc38fc50>
+<__main__.MyClass object at 0x7fc3bc38fc50>
+<__main__.MyClass object at 0x7fc3bc38fc50>
+<__main__.MyClass object at 0x7fc3bc38fc50>
+<__main__.MyClass object at 0x7fc3bc38fc50>
+<__main__.MyClass object at 0x7fc3bc38fc50>
+<__main__.MyClass object at 0x7fc3bc38fc50>
+<__main__.MyClass object at 0x7fc3bc38fc50>
+<__main__.MyClass object at 0x7fc3bc38fc50>
+<__main__.MyClass object at 0x7fc3bc38fc50>
+```
+
