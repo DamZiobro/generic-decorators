@@ -9,4 +9,4 @@ publish: build check #publish python package to PyPI using twine tool
 	twine upload -r pypi dist/*
 
 clean:
-	rm -rf awsinsights.egg-info build dist
+	rm -rf *.egg-info build dist
